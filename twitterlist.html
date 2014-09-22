@@ -1,0 +1,47 @@
+<head>
+  <title>Who Was There?</title>
+</head>
+
+<body>
+  <div class="container">
+    {{> content}}
+  </div>
+</body>
+
+<template name="content">
+  <div class="row">
+    <div class="span6">
+
+      <div class="well">
+      {{#if currentUser}}
+        <h4>Thanks! You've been added. </h4>
+      {{else}}
+
+
+        <h4>Sign in with Twitter to add your name to this list!</h4>
+        {{> loginButtons}}
+
+      {{/if}}
+      </div>
+      <table class="table">
+      {{#each users}}
+        {{> user}}
+      {{/each}}
+      </table>
+
+    </div>
+    <div class="span12 footer">
+      Awesome Twitter login functionality with meteor. By KannanSV.in
+    </div>
+    </div>
+</template>
+
+<template name="user">
+ <tr>
+<td>
+  <a target="_blank" href="http://twitter.com/{{services.twitter.screenName}}"><img src="{{services.twitter.profile_image_url}}"/> {{profile.name}}</a>
+<iframe style="width: 300px; height: 20px;" src="//platform.twitter.com/widgets/follow_button.html?screen_name={{services.twitter.screenName}}" height="240" width="320" frameborder="0" scrolling="no"></iframe>
+
+</td>
+</tr>
+</template>
